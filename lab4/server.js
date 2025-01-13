@@ -49,15 +49,16 @@ function Vehicle (type, speed){
     if(Vehicle.numOfVehicleInstances>=50) throw new Error("Vehicle limit reached");
     this.type = type;
     this.speed = speed;
-    this.start = function (){ return `${this.type} is starting at a speed of ${this.speed} km/h.` };
-    this.stop = function (){ return `${this.type} has stopped.` };
     Vehicle.numOfVehicleInstances++;
 }
+Vehicle.prototype.start = function (){ return `${this.type} is starting at a speed of ${this.speed} km/h.` };
+Vehicle.prototype.stop = function (){ return `${this.type} has stopped.` };
+
 function Car (type, speed, color){
     Vehicle.call(this, type, speed);
     this.color = color;
-    this.drive = function (){ return 'The car is now driving.' };
 }
+Car.prototype.drive = function (){ return `${this.type} is driving at a speed of ${this.speed} km/h.` };
 
 try {
     var vehicle1 = new Vehicle("Vehicle1", 100);
@@ -66,7 +67,7 @@ try {
     var car2 = new Car("Car2", 400, "blue");
 
     console.log(Vehicle.numOfVehicleInstances);
-    console.log(vehicle1);
+    console.log(vehicle1.start());
     console.log(vehicle2);
     console.log(car1);
     console.log(car2);

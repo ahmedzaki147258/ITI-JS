@@ -58,8 +58,8 @@ const gameOver=(isVictory)=>{
 }
 
 const initGame=(button, clickedLetter)=>{
-    if(currentWord.includes(clickedLetter)) {
-        [...currentWord].forEach((letter, index) => {
+    if(currentWord.toLowerCase().includes(clickedLetter)) {
+        [...currentWord.toLowerCase()].forEach((letter, index) => {
             if(letter===clickedLetter) {
                 correctLetters.push(letter);
                 wordDisplay.querySelectorAll("li")[index].innerHTML=letter;
