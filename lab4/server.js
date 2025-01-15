@@ -46,7 +46,7 @@ console.log(`output2: ${String(obj2)}`);
  */
 Vehicle.numOfVehicleInstances = 0;
 function Vehicle (type, speed){
-    if(Vehicle.numOfVehicleInstances>=50) throw new Error("Vehicle limit reached");
+    if(Vehicle.numOfVehicleInstances>=3) throw new Error("Vehicle limit reached");
     this.type = type;
     this.speed = speed;
     Vehicle.numOfVehicleInstances++;
@@ -83,7 +83,7 @@ try {
 function checksObjectIsInstanceOfCar(value) {
     return value instanceof Car; // Approach 1: Using the instanceof operator
     return Car.prototype.toString.call(value)==='[object Object]'; // Approach 2: Using the Object.prototype.toString.call() method
-    return value!==null && typeof value==='object' && value.constructor===Car; // Approach 3: Using a combination of type-checking and the constructor property
+    return value.constructor===Car; // Approach 3: Using a combination of type-checking and the constructor property
 }
 console.log(`check car2 is an instance of Car: ${checksObjectIsInstanceOfCar(car2)}`);
 /********************************************************* (3) *********************************************************/

@@ -1,0 +1,6 @@
+export const GAME_CONSTANTS = {
+    MAX_GUESSES: 6,
+    MAX_TIME: 30,
+    KEYBOARD_START: 97,
+    KEYBOARD_END: 122
+};
