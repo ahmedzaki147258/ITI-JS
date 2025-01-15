@@ -1,4 +1,4 @@
-const wordList = [
+export const wordList = [
     // Animals
     { word: "Elephant", hint: "A large mammal with a trunk and tusks." },
     { word: "Kangaroo", hint: "An Australian animal known for its hopping." },
