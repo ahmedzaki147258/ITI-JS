@@ -2,7 +2,7 @@
 
 An interactive web-based Hangman game with category selection and time-based gameplay.
 
-![img.png](lab3/img.png)
+![img.png](img.png)
 *Category Selection Screen - Players can choose from different categories like Animals, Movies, Countries, Sports, and Food*
 
 ## Game Features
@@ -29,7 +29,7 @@ An interactive web-based Hangman game with category selection and time-based gam
 - Shows the complete word and congratulatory message
 - Option to play again with category selection
 
-![img_3.png](lab3/img_3.png)
+![img_3.png](img_3.png)
 *Victory Screen - Shows when player successfully guesses the word*
 
 #### Lose Scenario:
