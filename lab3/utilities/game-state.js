@@ -1,5 +1,6 @@
 const gameState = {
     currentWord: '',
+    currentCategory: '',
     correctLetters: [],
     wrongGuessCount: 0
 };
@@ -13,6 +14,10 @@ export const resetGameState = () => {
 
 export const setCurrentWord = (word) => {
     gameState.currentWord = word;
+};
+
+export const setCurrentCategory = (category) => {
+    gameState.currentCategory = category;
 };
 
 export const incrementWrongGuessCount = () => {

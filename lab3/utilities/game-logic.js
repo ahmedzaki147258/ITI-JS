@@ -1,7 +1,7 @@
 import { GAME_CONSTANTS } from './game-constants.js';
 import { DOM_ELEMENTS } from './dom-elements.js';
 import { wordList } from './word-list.js';
-import { getGameState, resetGameState, setCurrentWord, incrementWrongGuessCount, addCorrectLetter } from './game-state.js';
+import { getGameState, resetGameState, setCurrentWord, incrementWrongGuessCount, addCorrectLetter, setCurrentCategory } from './game-state.js';
 import { resetTimer, clearGameTimer } from './timer.js';
 
 export const resetGame = () => {
@@ -12,15 +12,35 @@ export const resetGame = () => {
     DOM_ELEMENTS.keyboardDiv.querySelectorAll("button").forEach(btn => btn.disabled = false);
     DOM_ELEMENTS.wordDisplay.innerHTML = gameState.currentWord.split("").map(() => `<li class="letter"></li>`).join("");
     DOM_ELEMENTS.gameModel.classList.remove("show");
+    DOM_ELEMENTS.currentCategory.textContent = gameState.currentCategory;
     resetTimer();
 };
 
-export const getRandomWord = () => {
-    const { word, hint } = wordList[Math.floor(Math.random() * wordList.length)];
+export const getRandomWord = (category) => {
+    const categoryWords = wordList.filter(item => item.category === category);
+    const { word, hint } = categoryWords[Math.floor(Math.random() * categoryWords.length)];
     setCurrentWord(word);
     console.log(word);
+    setCurrentCategory(category);
     DOM_ELEMENTS.hintText.innerHTML = hint;
     resetGame();
+    DOM_ELEMENTS.categoryModal.style.display = 'none';
+};
+
+export const showCategorySelection = () => {
+    const categories = [...new Set(wordList.map(item => item.category))];
+    const categoryButtonsContainer = DOM_ELEMENTS.categoryModal.querySelector('.category-buttons');
+    categoryButtonsContainer.innerHTML = '';
+    categories.forEach(category => {
+        const button = document.createElement('button');
+        button.setAttribute('data-category', category);
+        button.textContent = category;
+        button.addEventListener('click', () => {
+            getRandomWord(category);
+        });
+        categoryButtonsContainer.appendChild(button);
+    });
+    DOM_ELEMENTS.categoryModal.style.display = 'flex';
 };
 
 export const gameOver = (isVictory) => {

@@ -2,12 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="./images/victory.gif" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hangman game</title>
     <link rel="stylesheet" href="./style.css">
     <script src="./script.js" type="module" defer></script>
 </head>
 <body>
+<div class="category-modal">
+    <div class="content">
+        <h2>Select a Category</h2>
+        <div class="category-buttons"></div>
+    </div>
+</div>
+
 <div class="game-model">
     <div class="content">
         <img src="" alt="">
@@ -20,6 +28,7 @@
 <div class="container">
     <div class="hangman-box">
         <img src="" alt="">
+        <h4 class="current-category">Category: <span></span></h4>
     </div>
     <div class="game-box">
         <ul class="word-display"></ul>
